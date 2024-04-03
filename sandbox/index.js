@@ -39,6 +39,26 @@ app.get("/math/circle/:radius", function (req, res) {
   res.send(myAnswer);
 });
 
+
+app.get("/math/rectangle/:width/:height", function (req, res) {
+  //JSON Content-type
+  res.type("json");
+  //get user-typed width value
+  let width = parseFloat(req.params.width);
+  //get user-typed height value
+  let height = parseFloat(req.params.height);
+
+  //JSON response
+  let answer = {
+    //Var for Area, using the width and height variables declared above
+    areaOfSquare: width * height,
+    //Var for perimeter, using the width and height variables declared above
+    perimeterOfSquare: width * 2 + height * 2,
+  };
+  //Send calculated JSON response
+  res.send(answer);
+});
+
 //Express handler/route for a post request to the path/endpoint "/helloPost".
 app.post("/helloPost", function (req, res) {
   //From the request's body, the name attribute is extracted.
