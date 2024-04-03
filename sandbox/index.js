@@ -39,7 +39,6 @@ app.get("/math/circle/:radius", function (req, res) {
   res.send(myAnswer);
 });
 
-
 app.get("/math/rectangle/:width/:height", function (req, res) {
   //JSON Content-type
   res.type("json");
@@ -57,6 +56,17 @@ app.get("/math/rectangle/:width/:height", function (req, res) {
   };
   //Send calculated JSON response
   res.send(answer);
+});
+
+app.get("/math/power/:base/:exponent", function (req, res) {
+  res.type("json");
+  let base = parseFloat(req.params.base);
+  let exponent = parseFloat(req.params.exponent);
+  let myAnswer = {
+    result: Math.pow(base, exponent),
+  };
+
+  res.send(myAnswer);
 });
 
 //Express handler/route for a post request to the path/endpoint "/helloPost".
